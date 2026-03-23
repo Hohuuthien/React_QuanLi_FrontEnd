@@ -1,0 +1,179 @@
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.page-header h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #1a202c;
+  letter-spacing: -0.02em;
+}
+
+
+.btn-add {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(118, 75, 162, 0.2);
+  transition: all 0.3s;
+}
+
+
+.search-container {
+  margin-bottom: 25px;
+}
+
+.search-container input {
+  width: 100%;
+  max-width: 400px;
+  padding: 14px 22px;
+  border: 2px solid #edf2f7;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  background: #ffffff;
+  color: #2d3748;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  outline: none;
+}
+
+.search-container input:focus {
+  border-color: #667eea;
+  background-color: #fff;
+  box-shadow:
+    0 10px 15px -3px rgba(102, 126, 234, 0.1),
+    0 4px 6px -2px rgba(102, 126, 234, 0.05);
+  transform: translateY(-1px);
+}
+
+.search-container input::placeholder {
+  color: #a0aec0;
+}
+
+
+.table-wrapper {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 8px;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.05),
+    0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  overflow: hidden;
+  animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+thead th {
+  background-color: #f8fafc;
+  color: #4a5568;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 18px 20px;
+  border-bottom: 1px solid #edf2f7;
+  text-align: left;
+}
+
+thead tr th:first-child {
+  border-top-left-radius: 16px;
+}
+thead tr th:last-child {
+  border-top-right-radius: 16px;
+}
+
+tbody td {
+  padding: 18px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #2d3748;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr {
+  transition: background 0.2s ease;
+}
+
+tbody tr:hover td {
+  background-color: #f1f5f9;
+}
+
+.role-badge {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+  display: inline-block;
+}
+
+.role-admin {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+.role-employee {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+
+.btn-delete {
+  padding: 8px 16px;
+  background-color: #fff;
+  color: #ef4444;
+  border: 1.5px solid #fee2e2;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-delete:hover {
+  background-color: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+  transform: scale(1.05);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,91 @@
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: #ffffff;
+}
+
+thead th {
+  background-color: #f8fafc;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 16px 24px;
+  border-bottom: 1px solid #edf2f7;
+  text-align: left;
+}
+
+tbody td {
+  padding: 16px 24px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+tbody tr {
+  transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.id-column {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.user-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.user-avatar-small {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Nút xóa tinh tế */
+.btn-delete {
+  padding: 8px 16px;
+  background-color: #fff1f2;
+  color: #e11d48;
+  border: 1px solid #fecdd3;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-delete:hover {
+  background-color: #e11d48;
+  color: #ffffff;
+  border-color: #e11d48;
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);
+  transform: translateY(-1px);
+}

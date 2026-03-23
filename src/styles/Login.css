@@ -1,0 +1,119 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-form h2 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  color: #2d3748;
+  text-align: center;
+  font-weight: 700;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.control-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5568;
+  margin-left: 2px;
+  transition: color 0.3s ease;
+}
+
+.control-group input,
+.control-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #edf2f7;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #2d3748;
+  background-color: #f7fafc;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.control-group input:hover {
+  border-color: #cbd5e0;
+}
+
+.control-group input:focus {
+  outline: none;
+  border-color: #764ba2;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(118, 75, 162, 0.1);
+}
+
+.control-group.error label {
+  color: #e53e3e;
+}
+
+.control-group.error input {
+  border-color: #f56565 !important;
+  background-color: #fff5f5;
+  color: #c53030;
+}
+
+.control-group.error input:focus {
+  box-shadow: 0 0 0 4px rgba(245, 101, 101, 0.2);
+  background-color: #ffffff;
+}
+
+.error-message {
+  color: #e53e3e;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 2px;
+  margin-left: 4px;
+  display: block;
+}
+
+.control-group.error {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-4px);
+  }
+  40%,
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+
+.auth-form button {
+  margin-top: 10px;
+  padding: 14px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+  transition: all 0.2s ease;
+}
+
+.auth-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(118, 75, 162, 0.4);
+}
+
+.auth-form button:active {
+  transform: translateY(1px);
+}
