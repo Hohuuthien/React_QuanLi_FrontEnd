@@ -1,27 +1,41 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { api } from "../services/api";
 import "../styles/Dialog.css";
 import Control from "../pages/Control";
 
-export default function FormDialog({ title, fields, endpoint, onSuccess }) {
-  const dialogRef = useRef();
+export default function FormDialog({
+  title,
+  fields,
+  endpoint,
+  onSuccess,
+  editData,
+  isEdit,
+  open,
+  setOpen,
+}) {
+  const createInitForm = () => {
+    const obj = {};
+    fields.forEach((f) => (obj[f.name] = ""));
+    return obj;
+  };
 
-  const initForm = fields.reduce((acc, field) => {
-    acc[field.name] = "";
-    return acc;
-  }, {});
-
-  const [form, setForm] = useState(initForm);
+  const [form, setForm] = useState(createInitForm());
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
 
-  const openDialog = () => {
-    dialogRef.current.showModal();
-  };
+  useEffect(() => {
+    if (!open) return;
 
-  const closeDialog = () => {
-    dialogRef.current.close();
-  };
+    const init = createInitForm();
+
+    if (editData) {
+      setForm({ ...init, ...editData });
+    } else {
+      setForm(init);
+    }
+
+    setErrors({});
+  }, [open, editData, fields]);
 
   const handleChange = (name, value) => {
     setForm((prev) => ({
@@ -38,52 +52,52 @@ export default function FormDialog({ title, fields, endpoint, onSuccess }) {
   };
 
   useEffect(() => {
-    let valid = true;
+    let hasEmpty = false;
+    let hasError = false;
 
     for (let key in form) {
       if (!form[key]) {
-        valid = false;
+        hasEmpty = true;
         break;
       }
     }
 
     for (let key in errors) {
       if (errors[key]) {
-        valid = false;
+        hasError = true;
         break;
       }
     }
 
-    setIsValid(valid);
+    setIsValid(!hasEmpty && !hasError);
   }, [form, errors]);
-
   const handleSubmit = async () => {
     if (!isValid) return;
 
     try {
-      const newData = {
-        ...form,
-        id: crypto.randomUUID().slice(0, 4),
-      };
+      if (isEdit) {
+        await api.put(`${endpoint}/${form.id}`, form);
+      } else {
+        const newData = {
+          ...form,
+          id: crypto.randomUUID().slice(0, 4),
+        };
+        await api.post(endpoint, newData);
+      }
 
-      await api.post(endpoint, newData);
-
-      setForm(initForm);
-      setErrors({});
-      closeDialog();
-
+      setOpen(false);
       onSuccess && onSuccess();
     } catch (error) {
-      console.error("Lỗi khi thêm:", error);
+      console.error("Lỗi:", error);
     }
   };
 
-  return (
-    <div style={{ marginBottom: "16px" }}>
-      <button onClick={openDialog}>+ Thêm</button>
+  if (!open) return null;
 
-      <dialog ref={dialogRef} className="custom-dialog">
-        <h3>{title}</h3>
+  return (
+    <div className="dialog-overlay">
+      <div className="custom-dialog">
+        <h3>{isEdit ? "Cập nhật" : title}</h3>
 
         <div className="form-content">
           {fields.map((field) => (
@@ -92,7 +106,7 @@ export default function FormDialog({ title, fields, endpoint, onSuccess }) {
               label={field.label}
               name={field.name}
               type={field.type || "text"}
-              value={form[field.name]}
+              value={form[field.name] || ""}
               onChange={handleChange}
               required={field.required}
               minLength={field.minLength}
@@ -102,20 +116,20 @@ export default function FormDialog({ title, fields, endpoint, onSuccess }) {
           ))}
         </div>
 
-        <div style={{ marginTop: "12px" }} className="dialog-actions">
-          <button onClick={handleSubmit} disabled={!isValid}>
-            Thêm
+        <div className="dialog-actions">
+          <button
+            className={`btn-submit ${!isValid ? "disabled" : ""}`}
+            onClick={handleSubmit}
+            disabled={!isValid}
+          >
+            {isEdit ? "Cập nhật" : "Thêm mới"}
           </button>
 
-          <button
-            onClick={closeDialog}
-            style={{ marginLeft: "8px" }}
-            className="cancel-btn"
-          >
+          <button onClick={() => setOpen(false)} className="btn-cancel">
             Hủy
           </button>
         </div>
-      </dialog>
+      </div>
     </div>
   );
 }

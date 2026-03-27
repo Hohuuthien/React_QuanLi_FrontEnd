@@ -1,91 +1,110 @@
+/* Table.css */
 .table-container {
   width: 100%;
   overflow-x: auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin: 20px 0;
 }
 
 table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  background-color: #ffffff;
-}
-
-thead th {
-  background-color: #f8fafc;
-  color: #64748b;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 16px 24px;
-  border-bottom: 1px solid #edf2f7;
+  border-collapse: collapse;
   text-align: left;
+  font-family: "Inter", sans-serif; /* Hoặc font hệ thống */
 }
 
-tbody td {
-  padding: 16px 24px;
-  border-bottom: 1px solid #f1f5f9;
-  color: #334155;
-  font-size: 14px;
-  vertical-align: middle;
+/* Header */
+thead th {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  padding: 16px;
+  border-bottom: 2px solid #edf2f7;
 }
 
+/* Rows */
 tbody tr {
-  transition: all 0.2s ease;
+  border-bottom: 1px solid #edf2f7;
+  transition: background 0.2s;
 }
 
 tbody tr:hover {
-  background-color: #f8fafc;
+  background-color: #f1f5f9;
 }
 
-tbody tr:last-child td {
-  border-bottom: none;
+td {
+  padding: 14px 16px;
+  vertical-align: middle;
+  color: #334155;
+  font-size: 0.95rem;
 }
 
-.id-column {
-  font-family: "Courier New", Courier, monospace;
-  font-weight: 600;
-  color: #94a3b8;
-}
-
+/* Avatar & Image handling */
 .user-name-cell {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-weight: 600;
-  color: #1e293b;
 }
 
 .user-avatar-small {
-  width: 32px;
-  height: 32px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  background: #6366f1;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  font-weight: 700;
+  font-weight: bold;
+  font-size: 0.8rem;
 }
 
-/* Nút xóa tinh tế */
+.table-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px; /* Bo góc nhẹ cho ảnh sản phẩm/user */
+  object-fit: cover;
+  border: 1px solid #e2e8f0;
+}
+
+/* ID Column */
+.id-column {
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+/* Buttons */
+.btn-edit,
 .btn-delete {
-  padding: 8px 16px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: 8px;
+  transition: transform 0.1s;
+}
+
+.btn-edit {
+  background-color: #eef2ff;
+  color: #4f46e5;
+}
+
+.btn-edit:hover {
+  background-color: #4f46e5;
+  color: white;
+}
+
+.btn-delete {
   background-color: #fff1f2;
   color: #e11d48;
-  border: 1px solid #fecdd3;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-delete:hover {
   background-color: #e11d48;
-  color: #ffffff;
-  border-color: #e11d48;
-  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);
-  transform: translateY(-1px);
+  color: white;
 }
