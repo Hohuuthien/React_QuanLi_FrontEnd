@@ -22,7 +22,7 @@ export default function Register() {
     const users = await api.get(`/users?email=${form.email}`);
 
     if (users.length > 0) {
-      alert("Email đã tồn tại");
+      alert("Vui lòng nhập tất cả các trường");
       return;
     }
 
@@ -71,6 +71,7 @@ export default function Register() {
         options={[
           { label: "Employee", value: "employee" },
           { label: "Admin", value: "admin" },
+          { label: "User", value: "user" },
         ]}
       />
 

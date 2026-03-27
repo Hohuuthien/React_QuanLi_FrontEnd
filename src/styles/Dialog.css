@@ -1,117 +1,128 @@
-/* 1. Nền mờ phía sau - Xịn hơn với blur sâu hơn một chút */
-.custom-dialog::backdrop {
-  background-color: rgba(
-    15,
-    23,
-    42,
-    0.5
-  ); /* Màu xanh đen slate cho cảm giác sang trọng */
-  backdrop-filter: blur(6px);
-}
-
-/* 2. Thân Dialog */
-.custom-dialog {
-  border: none;
-  border-radius: 16px; /* Bo góc lớn hơn cho hiện đại */
-  padding: 0; /* Để padding vào các container con để dễ quản lý */
-  width: 90%;
-  max-width: 480px;
-  box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  background: #ffffff;
-
-  /* Căn giữa tuyệt đối */
+/* Lớp nền mờ bao phủ toàn màn hình */
+.dialog-overlay {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  overflow: hidden; /* Để bo góc cắt được nội dung bên trong */
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6); /* Màu tối sang trọng hơn */
+  backdrop-filter: blur(4px); /* Làm mờ nền sau */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
 }
 
-/* 3. Header của Dialog */
-.custom-dialog h3 {
-  margin: 0;
-  padding: 20px 24px;
-  background-color: #f8fafc; /* Nền xám nhạt nhẹ cho header */
-  color: #1e293b;
-  font-size: 1.25rem;
-  font-weight: 600;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-/* 4. Phần thân chứa các ô Input (Control) */
-.form-content {
-  padding: 24px;
+/* Khung Dialog chính */
+.custom-dialog {
+  background: #ffffff;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  gap: 16px; /* Khoảng cách giữa các ô input */
+  max-height: 90vh; /* Giới hạn chiều cao để không bị tràn màn hình */
+  overflow: hidden; /* Để bo góc hoạt động chuẩn */
+  animation: modalAppear 0.3s ease-out;
 }
 
-/* 5. Footer chứa nút bấm */
+@keyframes modalAppear {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Tiêu đề */
+.custom-dialog h3 {
+  margin: 0;
+  padding: 24px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #1e293b;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Thân form - Chia 2 cột bằng Grid */
+.form-content {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Chia đôi cột */
+  gap: 20px;
+  overflow-y: auto; /* Cho phép cuộn nếu danh sách trường quá dài */
+}
+
+/* Các trường đặc biệt như "Lớp học" thường chiếm hết 1 dòng */
+/* Bạn có thể bọc Control trong 1 div có class này nếu cần */
+.full-row {
+  grid-column: span 2;
+}
+
+/* Khu vực nút bấm */
 .dialog-actions {
   padding: 16px 24px;
-  background-color: #f8fafc;
+  background: #f8fafc;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row-reverse; /* Đưa nút Thêm sang phải, Hủy sang trái */
+  justify-content: flex-start;
   gap: 12px;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid #f1f5f9;
 }
 
-/* 6. Button Styling - Tinh chỉnh hover và active */
-button {
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 0.875rem;
+/* Nút bấm chung */
+.btn-submit,
+.btn-cancel {
+  padding: 10px 24px;
+  border-radius: 10px;
   font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  outline: none;
+  transition: all 0.2s;
+  border: none;
 }
 
-/* Nút Submit chính */
-.submit-btn {
-  background-color: #2563eb;
+/* Nút Thêm/Cập nhật */
+.btn-submit {
+  background: #4f46e5;
   color: white;
-  border: 1px solid #2563eb;
 }
 
-.submit-btn:hover {
-  background-color: #1d4ed8;
+.btn-submit:hover:not(:disabled) {
+  background: #4338ca;
   transform: translateY(-1px);
-  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
 }
 
-.submit-btn:active {
-  transform: translateY(0);
+.btn-submit:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 /* Nút Hủy */
-.cancel-btn {
-  background-color: white;
-  color: #64748b;
-  border: 1px solid #e2e8f0;
+.btn-cancel {
+  background: #e2e8f0;
+  color: #475569;
 }
 
-.cancel-btn:hover {
-  background-color: #f1f5f9;
-  color: #1e293b;
-  border-color: #cbd5e1;
+.btn-cancel:hover {
+  background: #cbd5e1;
 }
 
-/* 7. Animation */
-.custom-dialog[open] {
-  animation: modalIn 0.3s ease-out;
-}
-
-@keyframes modalIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -48%) scale(0.96);
+/* Responsive: Trên điện thoại sẽ thành 1 cột */
+@media (max-width: 500px) {
+  .form-content {
+    grid-template-columns: 1fr;
   }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+
+  .dialog-actions {
+    flex-direction: column; /* Nút xếp chồng trên mobile */
+  }
+
+  .btn-submit,
+  .btn-cancel {
+    width: 100%;
   }
 }

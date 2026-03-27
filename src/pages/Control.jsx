@@ -20,12 +20,20 @@ export default function Control({
       err = label + " không được để trống";
     } else if (minLength && value.length < minLength) {
       err = label + " phải có ít nhất " + minLength + " ký tự";
+    } else if (
+      name === "avatar" &&
+      value &&
+      !/\.(png|jpg|jpeg)$/i.test(value)
+    ) {
+      err = "URL hình ảnh phải có đuôi .png, .jpg hoặc .jpeg";
     }
 
-    setError(err);
-    onError && onError(name, err);
-  }, [value, required, minLength, label, name, onError]);
+    setError((prev) => (prev !== err ? err : prev));
 
+    if (onError) {
+      onError(name, err);
+    }
+  }, [value, required, minLength, label, name]);
   const handleChange = (e) => {
     onChange(name, e.target.value);
   };
@@ -33,7 +41,6 @@ export default function Control({
   return (
     <div className="control-group" style={{ marginBottom: "10px" }}>
       <label>{label}</label>
-      <br />
 
       {type === "select" ? (
         <select value={value} onChange={handleChange}>

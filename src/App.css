@@ -215,3 +215,49 @@ footer {
   font-size: 1.2rem;
   margin: 0;
 }
+
+/* Căn giữa nội dung trong th */
+.table-header-cell {
+  vertical-align: middle;
+  text-align: left; /* Hoặc center tùy bạn */
+  padding: 10px 8px;
+  white-space: nowrap;
+}
+
+/* Container chứa text và icon */
+.header-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px; /* Khoảng cách giữa chữ ID và icon */
+}
+
+/* Style cho cái details/summary */
+.sort-details {
+  display: inline-flex !important;
+  align-items: center;
+}
+
+.sort-summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+  outline: none;
+}
+
+.sort-summary::-webkit-details-marker {
+  display: none; /* Ẩn mũi tên mặc định trên Safari */
+}
+
+.sort-summary:hover {
+  opacity: 0.7;
+  background-color: rgba(0, 0, 0, 0.05); /* Hiệu ứng nền nhẹ khi hover */
+  border-radius: 4px;
+}
+
+.btn-sort {
+  width: 16px; /* Chỉnh lại kích thước icon cho vừa vặn */
+  height: 16px;
+  display: block;
+}

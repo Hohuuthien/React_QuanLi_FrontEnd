@@ -1,0 +1,57 @@
+.filters {
+  display: flex;
+  align-items: flex-end; /* Căn đáy */
+  gap: 12px;
+}
+
+/* Xử lý label nếu Filters cũng có label */
+.filters-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Style chung cho các ô nhập liệu */
+.filters select,
+.filters input[type="text"],
+.filters input[type="date"],
+.search-container input {
+  height: 42px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  background-color: #f8fafc;
+  font-size: 14px;
+  color: #334155;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.filters select:focus,
+.filters input:focus {
+  border-color: #6366f1;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.date-range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Nút Reset tinh tế hơn */
+.filters button {
+  height: 42px;
+  padding: 0 16px;
+  background-color: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filters button:hover {
+  background-color: #e2e8f0;
+}

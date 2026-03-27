@@ -69,130 +69,191 @@
       "email": "nhungnguyen@gmail.com",
       "password": "123456",
       "role": "admin"
+    },
+    {
+      "id": "1589",
+      "username": "meil",
+      "email": "meil@gmail.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": "b08b",
+      "username": "",
+      "email": "",
+      "password": "",
+      "role": "employee"
+    },
+    {
+      "id": "8237",
+      "username": "",
+      "email": "",
+      "password": "",
+      "role": "employee"
     }
   ],
   "students": [
     {
-      "id": "2",
       "name": "Tran Thi B",
       "email": "b@gmail.com",
-      "class": "CNTT2"
+      "birthDay": "2004-07-14",
+      "avatar": "https://cdn-icons-png.flaticon.com/128/149/149071.png",
+      "class": "CNTT2",
+      "id": "2"
     },
     {
       "id": "3",
       "name": "Le Van C",
       "email": "c@gmail.com",
-      "class": "CNTT1"
+      "birthDay": "2003-05-27",
+      "class": "CNTT1",
+      "avatar": "https://i.pravatar.cc/150?img=2"
     },
     {
       "id": "4",
       "name": "Pham Thi D",
       "email": "d@gmail.com",
-      "class": "CNTT3"
+      "birthDay": "2003-05-27",
+      "class": "CNTT3",
+      "avatar": "https://i.pravatar.cc/150?img=3"
     },
     {
       "id": "5",
       "name": "Hoang Van E",
       "email": "e@gmail.com",
-      "class": "CNTT2"
+      "birthDay": "2003-05-27",
+      "class": "CNTT2",
+      "avatar": "https://i.pravatar.cc/150?img=4"
     },
     {
       "id": "6",
       "name": "Nguyen Thi F",
       "email": "f@gmail.com",
-      "class": "CNTT1"
+      "birthDay": "2003-05-27",
+      "class": "CNTT1",
+      "avatar": "https://i.pravatar.cc/150?img=5"
     },
     {
       "id": "7",
       "name": "Tran Van G",
       "email": "g@gmail.com",
-      "class": "CNTT3"
+      "birthDay": "2003-05-27",
+      "class": "CNTT3",
+      "avatar": "https://i.pravatar.cc/150?img=6"
     },
     {
       "id": "8",
       "name": "Le Thi H",
       "email": "h@gmail.com",
-      "class": "CNTT2"
+      "birthDay": "2003-05-27",
+      "class": "CNTT2",
+      "avatar": "https://i.pravatar.cc/150?img=7"
     },
     {
       "id": "9",
       "name": "Pham Van I",
       "email": "i@gmail.com",
-      "class": "CNTT1"
+      "birthDay": "2003-05-27",
+      "class": "CNTT1",
+      "avatar": "https://i.pravatar.cc/150?img=8"
     },
     {
       "id": "10",
       "name": "Hoang Thi K",
       "email": "k@gmail.com",
-      "class": "CNTT3"
+      "birthDay": "2003-05-27",
+      "class": "CNTT3",
+      "avatar": "https://i.pravatar.cc/150?img=9"
     }
   ],
   "employees": [
     {
-      "id": "1",
       "name": "Tran Van B",
       "email": "b@gmail.com",
-      "department": "IT"
+      "birthDay": "1998-06-17",
+      "avatar": "https://cdn-icons-png.flaticon.com/128/16683/16683419.png",
+      "department": "IT",
+      "id": "1"
     },
     {
       "id": "2",
       "name": "Nguyen Van Nam",
       "email": "nam@gmail.com",
-      "department": "HR"
+      "birthDay": "2003-05-27",
+      "department": "HR",
+      "avatar": "https://i.pravatar.cc/150?img=11"
     },
     {
       "id": "3",
       "name": "Le Thi Hoa",
       "email": "hoa@gmail.com",
-      "department": "Finance"
+      "birthDay": "2003-05-27",
+      "department": "Finance",
+      "avatar": "https://i.pravatar.cc/150?img=12"
     },
     {
       "id": "4",
       "name": "Pham Van Long",
       "email": "long@gmail.com",
-      "department": "IT"
+      "birthDay": "2003-05-27",
+      "department": "IT",
+      "avatar": "https://i.pravatar.cc/150?img=13"
     },
     {
       "id": "5",
       "name": "Tran Thi Mai",
       "email": "mai@gmail.com",
-      "department": "Marketing"
+      "birthDay": "2003-05-27",
+      "department": "Marketing",
+      "avatar": "https://i.pravatar.cc/150?img=14"
     },
     {
       "id": "6",
       "name": "Hoang Van Tuan",
       "email": "tuan@gmail.com",
-      "department": "HR"
+      "birthDay": "2003-05-27",
+      "department": "HR",
+      "avatar": "https://i.pravatar.cc/150?img=15"
     },
     {
       "id": "7",
       "name": "Nguyen Thi Lan",
       "email": "lan@gmail.com",
-      "department": "Finance"
+      "birthDay": "2003-05-27",
+      "department": "Finance",
+      "avatar": "https://i.pravatar.cc/150?img=16"
     },
     {
       "id": "8",
       "name": "Le Van Hieu",
       "email": "hieu@gmail.com",
-      "department": "IT"
+      "birthDay": "2003-05-27",
+      "department": "IT",
+      "avatar": "https://i.pravatar.cc/150?img=17"
     },
     {
       "id": "9",
       "name": "Pham Thi Yen",
       "email": "yen@gmail.com",
-      "department": "Marketing"
+      "birthDay": "2003-05-27",
+      "department": "Marketing",
+      "avatar": "https://i.pravatar.cc/150?img=18"
     },
     {
       "id": "10",
       "name": "Tran Van Duc",
       "email": "duc@gmail.com",
-      "department": "HR"
+      "birthDay": "2003-05-27",
+      "department": "HR",
+      "avatar": "https://i.pravatar.cc/150?img=19"
     },
     {
       "id": "0f41",
       "name": "thienhello",
       "email": "hello@gmail.com",
-      "department": "IT "
+      "birthDay": "2003-05-27",
+      "department": "IT",
+      "avatar": "https://i.pravatar.cc/150?img=20"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
