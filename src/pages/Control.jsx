@@ -10,6 +10,7 @@ export default function Control({
   minLength,
   options = [],
   onError,
+  placeholder,
 }) {
   const errorRef = useRef("");
   const errorElRef = useRef(null);
@@ -65,7 +66,12 @@ export default function Control({
           ))}
         </select>
       ) : (
-        <input type={type} value={value} onChange={handleChange} />
+        <input
+          type={type}
+          value={value}
+          onChange={handleChange}
+          placeholder={placeholder}
+        />
       )}
 
       <p

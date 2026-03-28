@@ -114,12 +114,12 @@
   letter-spacing: 0.05em;
 }
 .theme-btn {
-  background: transparent;
-  border: none;
+  padding: 6px 10px;
+  border-radius: 50%;
   cursor: pointer;
-  padding: 6px;
-  border-radius: 8px;
-  transition: 0.2s;
+  border: none;
+  background-color: var(--card);
+  color: var(--text);
 }
 
 .theme-btn:hover {
