@@ -9,7 +9,6 @@ import FormDialog from "../components/FormDialog";
 export default function EmployeeManagement() {
   const [employees, setEmployees] = useState([]);
   const [search, setSearch] = useState("");
-
   const [open, setOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [editData, setEditData] = useState(null);
