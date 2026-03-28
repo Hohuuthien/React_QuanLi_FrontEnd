@@ -1,31 +1,51 @@
+import { useAuth } from "../contexts/AuthContext";
+import { useTheme } from "../contexts/ThemeContext";
 import "../styles/Header.css";
 
 const DEFAULT_AVATAR = "/images/user.png";
-const ADMIN_AVATAR = "/images/administrator.png";
-const EMPLOYEE_AVATAR = "/images/boy.png";
-const USER_AVATAR = "/images/user.png";
 
 const ROLE_AVATAR = {
-  admin: ADMIN_AVATAR,
-  employee: EMPLOYEE_AVATAR,
-  user: USER_AVATAR,
+  admin: "/images/administrator.png",
+  employee: "/images/boy.png",
+  user: "/images/user.png",
 };
 
-export default function Header({ user }) {
-  const avatar = user?.avatar || ROLE_AVATAR[user?.role] || DEFAULT_AVATAR;
+export default function Header() {
+  const { user } = useAuth();
+  const { theme, toggleTheme } = useTheme();
+
+  const avatarSrc =
+    user?.avatar || ROLE_AVATAR[user?.role?.toLowerCase?.()] || DEFAULT_AVATAR;
+
+  const username = user?.username || "Guest";
 
   return (
     <header className="header">
       <h2>Hệ thống quản lý</h2>
 
       <div className="user-info">
+        <button
+          onClick={toggleTheme}
+          className="theme-btn"
+          aria-label="Toggle theme"
+        >
+          <img
+            src={theme === "light" ? "/images/moon.png" : "/images/sun.png"}
+            alt="theme icon"
+            className="theme-icon"
+          />
+        </button>
+
         <img
-          src={avatar}
-          alt="avatar"
+          src={avatarSrc}
+          alt="User avatar"
           className="avatar"
-          onError={(e) => (e.target.src = DEFAULT_AVATAR)}
+          onError={(e) => {
+            e.currentTarget.src = DEFAULT_AVATAR;
+          }}
         />
-        <span>Xin chào: {user?.username}</span>
+
+        <span>Xin chào: {username}</span>
       </div>
     </header>
   );

@@ -1,17 +1,25 @@
 .filters {
   display: flex;
-  align-items: flex-end; /* Căn đáy */
+  align-items: flex-end;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
-/* Xử lý label nếu Filters cũng có label */
 .filters-item {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-/* Style chung cho các ô nhập liệu */
+.filters-item label {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-left: 2px;
+}
+
 .filters select,
 .filters input[type="text"],
 .filters input[type="date"],
@@ -19,39 +27,62 @@
   height: 42px;
   padding: 0 12px;
   border-radius: 10px;
-  border: 1.5px solid #e2e8f0;
-  background-color: #f8fafc;
+
+  border: 1.5px solid var(--border);
+  background-color: var(--input-bg);
+  color: var(--text);
+
   font-size: 14px;
-  color: #334155;
-  transition: all 0.2s;
+  transition: all var(--transition-speed);
   outline: none;
 }
 
 .filters select:focus,
 .filters input:focus {
-  border-color: #6366f1;
-  background-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  border-color: var(--primary);
+  background-color: var(--card);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.filters input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: var(--calendar-icon-filter, none);
+  cursor: pointer;
 }
 
 .date-range {
   display: flex;
   align-items: center;
   gap: 8px;
+  color: var(--text-muted);
+  font-weight: 600;
 }
 
-/* Nút Reset tinh tế hơn */
 .filters button {
   height: 42px;
   padding: 0 16px;
-  background-color: #f1f5f9;
-  color: #64748b;
-  border: 1px solid #e2e8f0;
+  background-color: var(--hover);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+
   border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .filters button:hover {
-  background-color: #e2e8f0;
+  background-color: var(--border);
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .filters button {
+    grid-column: span 2;
+  }
 }

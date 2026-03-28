@@ -12,5 +12,5 @@ export const logout = () => {
 
 export const isAdmin = () => {
   const user = getUser();
-  return user?.role === "Admin";
+  return user?.role?.toLowerCase() === "admin";
 };

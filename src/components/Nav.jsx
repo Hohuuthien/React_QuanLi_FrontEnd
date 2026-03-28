@@ -1,10 +1,10 @@
+import { useAuth } from "../contexts/AuthContext";
 import "../styles/Nav.css";
-import { logout } from "../utils/auth";
 
-export default function Nav({ user, setPage, setUser }) {
+export default function Nav({ setPage }) {
+  const { user, logout } = useAuth();
   const handleLogout = () => {
     logout();
-    setUser(null);
   };
   return (
     <aside className="sidebar">

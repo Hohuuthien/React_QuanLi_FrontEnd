@@ -1,32 +1,58 @@
-/* Trong Nav.js hoặc App.css */
 .nav-menu {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 20px;
+  gap: 8px;
+  padding: 16px;
+  background-color: var(--card);
 }
 
 .nav-item {
   display: flex;
   align-items: center;
+  gap: 12px;
   padding: 12px 16px;
+
   background: transparent;
   border: none;
-  color: #a0aec0;
-  border-radius: 12px;
+
+  color: var(--text-muted);
+
+  border-radius: var(--radius-md);
   cursor: pointer;
   text-align: left;
   font-weight: 600;
-  transition: all 0.2s;
+  font-size: 0.95rem;
+
+  transition: all var(--transition-speed) ease;
 }
 
 .nav-item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: white;
+  background-color: var(--hover);
+  color: var(--primary);
+  transform: translateX(4px);
 }
 
 .nav-item.active {
-  background: #6366f1; /* Màu tím chủ đạo của bạn */
-  color: white;
+  background-color: var(--primary);
+  color: #ffffff !important;
+
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.nav-item i,
+.nav-item svg {
+  font-size: 1.1rem;
+  transition: transform 0.2s;
+}
+
+.nav-item:hover i,
+.nav-item:hover svg {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .nav-item {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
 }

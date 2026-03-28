@@ -2,13 +2,13 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Nav from "./Nav";
 
-export default function Layout({ user, setPage, setUser, children }) {
+export default function Layout({ setPage, children }) {
   return (
     <div className="layout">
-      <Nav user={user} setPage={setPage} setUser={setUser} />
+      <Nav setPage={setPage} />
 
       <div className="main-wrapper">
-        <Header user={user} />
+        <Header />
         <main className="content">{children}</main>
         <Footer />
       </div>

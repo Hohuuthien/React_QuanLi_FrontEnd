@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Control({
   label,
@@ -11,9 +11,10 @@ export default function Control({
   options = [],
   onError,
 }) {
-  const [error, setError] = useState("");
+  const errorRef = useRef("");
+  const errorElRef = useRef(null);
 
-  useEffect(() => {
+  const validate = () => {
     let err = "";
 
     if (required && !value.trim()) {
@@ -28,12 +29,24 @@ export default function Control({
       err = "URL hình ảnh phải có đuôi .png, .jpg hoặc .jpeg";
     }
 
-    setError((prev) => (prev !== err ? err : prev));
+    if (errorRef.current !== err) {
+      errorRef.current = err;
 
-    if (onError) {
-      onError(name, err);
+      if (errorElRef.current) {
+        errorElRef.current.textContent = err;
+        errorElRef.current.style.display = err ? "block" : "none";
+      }
+
+      if (onError) {
+        onError(name, err);
+      }
     }
+  };
+
+  useEffect(() => {
+    validate();
   }, [value, required, minLength, label, name]);
+
   const handleChange = (e) => {
     onChange(name, e.target.value);
   };
@@ -55,7 +68,10 @@ export default function Control({
         <input type={type} value={value} onChange={handleChange} />
       )}
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      <p
+        ref={errorElRef}
+        style={{ color: "red", display: "none", margin: 0 }}
+      />
     </div>
   );
 }

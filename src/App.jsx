@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { getUser } from "./utils/auth";
+import { useState } from "react";
+import { useAuth } from "./contexts/AuthContext";
 
 import Login from "./components/Login";
 import Register from "./pages/Register";
@@ -11,14 +11,10 @@ import EmployeeManagement from "./pages/EmployeeManagement";
 import "./App.css";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const { user } = useAuth();
+
   const [tab, setTab] = useState("login");
   const [page, setPage] = useState("students");
-
-  useEffect(() => {
-    const u = getUser();
-    if (u) setUser(u);
-  }, []);
 
   if (!user) {
     return (
@@ -45,7 +41,7 @@ function App() {
           }`}
         >
           <div className="form-slide">
-            <Login setUser={setUser} />
+            <Login />
           </div>
 
           <div className="form-slide">
@@ -57,7 +53,7 @@ function App() {
   }
 
   return (
-    <Layout user={user} page={page} setPage={setPage} setUser={setUser}>
+    <Layout page={page} setPage={setPage}>
       {page === "students" && <StudentManagement />}
 
       {page === "employees" && user?.role === "admin" && <EmployeeManagement />}

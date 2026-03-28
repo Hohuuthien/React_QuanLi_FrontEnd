@@ -1,128 +1,150 @@
-/* Lớp nền mờ bao phủ toàn màn hình */
 .dialog-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.6); /* Màu tối sang trọng hơn */
-  backdrop-filter: blur(4px); /* Làm mờ nền sau */
-  display: flex;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
   align-items: center;
   justify-content: center;
   z-index: 9999;
   padding: 20px;
+  transition: all 0.3s ease;
 }
 
-/* Khung Dialog chính */
 .custom-dialog {
-  background: #ffffff;
+  background-color: var(--card);
+  color: var(--text);
   width: 100%;
   max-width: 600px;
   border-radius: 20px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
   display: flex;
   flex-direction: column;
-  max-height: 90vh; /* Giới hạn chiều cao để không bị tràn màn hình */
-  overflow: hidden; /* Để bo góc hoạt động chuẩn */
-  animation: modalAppear 0.3s ease-out;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: modalAppear 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes modalAppear {
   from {
-    transform: scale(0.9);
+    transform: translateY(20px) scale(0.95);
     opacity: 0;
   }
   to {
-    transform: scale(1);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }
 
-/* Tiêu đề */
 .custom-dialog h3 {
   margin: 0;
   padding: 24px;
   text-align: center;
-  font-size: 1.5rem;
-  color: #1e293b;
-  border-bottom: 1px solid #f1f5f9;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.02);
 }
 
-/* Thân form - Chia 2 cột bằng Grid */
 .form-content {
-  padding: 24px;
+  padding: 30px;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Chia đôi cột */
-  gap: 20px;
-  overflow-y: auto; /* Cho phép cuộn nếu danh sách trường quá dài */
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  overflow-y: auto;
+  background-color: var(--card);
 }
 
-/* Các trường đặc biệt như "Lớp học" thường chiếm hết 1 dòng */
-/* Bạn có thể bọc Control trong 1 div có class này nếu cần */
 .full-row {
   grid-column: span 2;
 }
 
-/* Khu vực nút bấm */
 .dialog-actions {
-  padding: 16px 24px;
-  background: #f8fafc;
+  padding: 16px 30px;
+  background-color: var(--card);
+  border-top: 1px solid var(--border);
   display: flex;
-  flex-direction: row-reverse; /* Đưa nút Thêm sang phải, Hủy sang trái */
-  justify-content: flex-start;
+  flex-direction: row-reverse;
   gap: 12px;
-  border-top: 1px solid #f1f5f9;
 }
 
-/* Nút bấm chung */
 .btn-submit,
 .btn-cancel {
-  padding: 10px 24px;
-  border-radius: 10px;
+  padding: 12px 24px;
+  border-radius: 12px;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   border: none;
 }
 
-/* Nút Thêm/Cập nhật */
 .btn-submit {
-  background: #4f46e5;
-  color: white;
+  background-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .btn-submit:hover:not(:disabled) {
-  background: #4338ca;
+  filter: brightness(1.1);
   transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
 }
 
 .btn-submit:disabled {
-  background: #cbd5e1;
+  background-color: var(--border);
+  color: var(--text);
+  opacity: 0.5;
   cursor: not-allowed;
-  opacity: 0.7;
 }
 
-/* Nút Hủy */
 .btn-cancel {
-  background: #e2e8f0;
-  color: #475569;
+  background-color: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
 }
 
 .btn-cancel:hover {
-  background: #cbd5e1;
+  background-color: var(--border);
+  color: var(--text);
 }
 
-/* Responsive: Trên điện thoại sẽ thành 1 cột */
-@media (max-width: 500px) {
+.form-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.form-content::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+  .custom-dialog {
+    max-width: 95%;
+    border-radius: 16px;
+  }
+
   .form-content {
     grid-template-columns: 1fr;
+    padding: 20px;
   }
 
   .dialog-actions {
-    flex-direction: column; /* Nút xếp chồng trên mobile */
+    flex-direction: column;
+    padding: 20px;
   }
 
   .btn-submit,
   .btn-cancel {
     width: 100%;
+    padding: 14px;
   }
 }
